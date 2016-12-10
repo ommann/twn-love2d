@@ -6,15 +6,20 @@ Twn adds \_\_call-metamethods to the flux-module and to the objects it creates.
 Twn will not alter the existing functionality of the flux-module.
 
 # Usage
-Previously used
+Twn assumes that flux is required to a variable "flux".
+```lua
+flux = require 'flux'
+       require 'twn'
+```
+Previously used.
 ```lua
 flux.to(object, time, changes)
 ```
-Can now be alternatively accomplished
+Can now be alternatively accomplished.
 ```lua
 flux(object, time, changes)
 ```
-Easing can be set as an optional argument
+Easing can be set as an optional argument.
 ```lua
 flux(object, time, easing, changes)
 ```
