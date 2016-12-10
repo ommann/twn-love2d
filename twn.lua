@@ -17,7 +17,7 @@ function set(self, name, object)
   return self
 end
 
-tweener = function(self, ...)
+flux._twnr = function(self, ...)
   local args = {...}
 
   local tween = nil
@@ -85,14 +85,14 @@ tweener = function(self, ...)
   if type(args[index+1]) == "table" then error("unexpected second object argument", 2) end
 
   if index < #args then
-    return tweener( tween, unpack( skip(args, index) ) )
+    return flux._twnr( tween, unpack( skip(args, index) ) )
   else
-    getmetatable(tween).__call = tweener
+    getmetatable(tween).__call = flux._twnr
     tween.set = set
 
     return tween
   end
 end
 
-getmetatable(flux).__call = tweener
+getmetatable(flux).__call = flux._twnr
 --return flux
